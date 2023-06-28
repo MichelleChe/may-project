@@ -1,0 +1,58 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 debug pnpm:package-manifest": {
+    "initial": {
+      "dependencies": {
+        "@np/storage": "^1.0.1",
+        "vsc-leetcode-cli": "github:leetcode-tools/leetcode-cli"
+      },
+      "name": "may",
+      "version": "1.0.0",
+      "main": "index.js",
+      "devDependencies": {},
+      "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "keywords": [],
+      "author": "",
+      "license": "ISC",
+      "description": ""
+    },
+    "prefix": "/Users/may"
+  },
+  "2 debug pnpm:context": {
+    "currentLockfileExists": false,
+    "storeDir": "/Users/may/Library/pnpm/store/v3",
+    "virtualStoreDir": "/Users/may/node_modules/.pnpm"
+  },
+  "3 debug pnpm:stage": {
+    "prefix": "/Users/may",
+    "stage": "resolution_started"
+  },
+  "4 error pnpm": {
+    "code": "ERR_PNPM_FETCH_404",
+    "hint": "@np/storage is not in the npm registry, or you have no permission to fetch it.\n\nAn authorization header was used: Bearer a69a[hidden]",
+    "request": {
+      "authHeaderValue": "Bearer a69ae89f-6dcb-476b-9daf-223e249cedd1",
+      "url": "https://packages.aliyun.com/5f9b79aa9cffa29cfdd3dda7/npm/npm-registry/@np%2Fstorage"
+    },
+    "response": {
+      "size": 0
+    },
+    "pkgName": "@np/storage",
+    "spec": {
+      "fetchSpec": ">=1.0.1 <2.0.0-0",
+      "name": "@np/storage",
+      "type": "range"
+    },
+    "pkgsStack": [],
+    "err": {
+      "name": "pnpm",
+      "message": "GET https://packages.aliyun.com/5f9b79aa9cffa29cfdd3dda7/npm/npm-registry/@np%2Fstorage: Not Found - 404",
+      "code": "ERR_PNPM_FETCH_404",
+      "stack": "pnpm: GET https://packages.aliyun.com/5f9b79aa9cffa29cfdd3dda7/npm/npm-registry/@np%2Fstorage: Not Found - 404\n    at RetryOperation._fn (/snapshot/dist/pnpm.cjs)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)"
+    }
+  }
+}

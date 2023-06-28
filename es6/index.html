@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>test</title>
+  </head>
+
+  <style>
+    html {
+      overflow: hidden;
+      height: 100%;
+    }
+
+    body {
+      /* 视差元素的父级需要3D视角 */
+      perspective: 1px;
+      transform-style: preserve-3d;
+      height: 100%;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+
+    #app {
+      width: 100vw;
+      height: 200vh;
+      background: skyblue;
+      padding-top: 100px;
+    }
+
+    .one {
+      width: 500px;
+      height: 200px;
+      background: #409eff;
+      transform: translateZ(0px);
+      margin-bottom: 50px;
+    }
+
+    .two {
+      width: 500px;
+      height: 200px;
+      background: #67c23a;
+      transform: translateZ(-1px);
+      margin-bottom: 150px;
+    }
+
+    .three {
+      width: 500px;
+      height: 200px;
+      background: #e6a23c;
+      transform: translateZ(-2px);
+      margin-bottom: 150px;
+    }
+  </style>
+
+  <body>
+    <!-- <button id="click">click</button> -->
+    <div id="app">
+      <div class="one">one</div>
+      <div class="two">two</div>
+      <div class="three">three</div>
+    </div>
+  </body>
+  <script>
+    let click = document.querySelector("#click");
+    let content = document.querySelector("#content");
+
+    function debounce(fn, delay = 500, immediate = false) {
+      let timer;
+      return function () {
+        const context = this;
+        if (timer) clearTimeout(timer);
+
+        if (immediate) {
+          const callNow = !timer;
+          if (callNow) fn.call(context, ...arguments);
+          timer = setTimeout(() => {
+            timer = null;
+          }, delay);
+        } else {
+          timer = setTimeout(() => {
+            fn.call(context, ...arguments);
+          }, delay);
+        }
+      };
+    }
+
+    function throllted(fn, wait = 500, immediate = false) {
+      let timer;
+      let oldTime = new Date();
+
+      return function () {
+        const context = this;
+        if (immediate) {
+          const now = new Date();
+          if (now - oldTime > wait) {
+            fn.call(context, ...arguments);
+            oldTime = new Date();
+          }
+        } else {
+          if (timer) return;
+          timer = setTimeout(() => {
+            fn.call(context, ...arguments);
+            timer = null;
+          }, wait);
+        }
+      };
+    }
+    const fn = debounce((v) => console.log(v), 500, true);
+    const fn2 = throllted((v) => console.log(v), 600);
+    click.addEventListener("click", () => fn2("bbbbbbb"));
+  </script>
+</html>
