@@ -1,9 +1,10 @@
 import { useRoutes } from "react-router-dom";
-import routeConfig from "@/route/config.ts";
+import routeConfig from "@/route/config";
+import { RouterAuth } from '@/route'
 
 function App() {
   const Element = useRoutes(routeConfig);
-  return <>{Element}</>;
+  return <RouterAuth>{Element}</RouterAuth>;
 }
 
 export default App;

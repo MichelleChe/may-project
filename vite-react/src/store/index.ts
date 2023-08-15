@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit'
 
 import testSlice from './test.ts'
 import testSlice2 from './test2.ts'
+import user from './user.ts'
 
 const store = configureStore({
   reducer: {
     test: testSlice,
-    test2: testSlice2
+    test2: testSlice2,
+    user
   },
 })
 

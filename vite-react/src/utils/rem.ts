@@ -1,6 +1,8 @@
 import { isMobile } from 'react-device-detect'
 
-const baseSize = isMobile ? 50 : 16
+console
+  .log(isMobile)
+const baseSize = isMobile ? 10 : 16
 const baseWidth = isMobile ? 375 : 720
 function setRem() {
   const scale = document.documentElement.clientWidth / baseWidth

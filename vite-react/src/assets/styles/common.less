@@ -1,0 +1,83 @@
+@primary: #7638e1;
+@primaryBackground: #f4f0ff;
+@gray1: #272e42;
+@gray2: #4a536a;
+@gray3: #7d869c;
+@gray4: #adb3c2;
+@gray5: #d6d9e1;
+@gray6: #eff0f3;
+@white: #ffffff;
+
+.image-bg(@w, @h, @img) {
+  width: @w;
+  height: @h;
+  background: @img no-repeat center;
+  background-size: contain;
+}
+
+// 单行文本省略
+.text-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// 多行文本溢出
+.text-overflow-line(@i: 2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @i;
+}
+
+.generate-style(@n, @i: 1) when (@i =< @n) {
+  .p@{i} {
+    padding: @i + 0px;
+  }
+
+  .pt@{i} {
+    padding-top: @i + 0px;
+  }
+
+  .pl@{i} {
+    padding-left: @i + 0px;
+  }
+
+  .pb@{i} {
+    padding-bottom: @i + 0px;
+  }
+
+  .pr@{i} {
+    padding-right: @i + 0px;
+  }
+
+  .m@{i} {
+    margin: @i + 0px;
+  }
+
+  .mt@{i} {
+    margin-top: @i + 0px;
+  }
+
+  .mr@{i} {
+    margin-right: @i + 0px;
+  }
+
+  .mb@{i} {
+    margin-bottom: @i + 0px;
+  }
+
+  .ml@{i} {
+    margin-left: @i + 0px;
+  }
+
+  .ft@{i} {
+    font-size: @i + 0px;
+    line-height: 1
+  }
+
+  .generate-style(@n, (@i + 1));
+}
+
+.generate-style(50);
