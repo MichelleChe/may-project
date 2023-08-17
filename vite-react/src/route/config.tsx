@@ -14,10 +14,6 @@ const routeConfig: RouteProps[] = [{
     {
       path: '/page1/:id',
       element: lazyLoad(lazy(() => import('@/views/pages/page1'))),
-      loader:({ params }) => {
-        console.log(params, '-----')
-        return []
-      },
       meta: {
         auth: true,
         log: createLogParams('page1')
@@ -33,11 +29,11 @@ const routeConfig: RouteProps[] = [{
   ]
 }]
 
-
-const commonRouteConfig:RouteProps[] = [
+// 开发使用工具链接
+const devRouteConfig: RouteProps[] = [
   {
     path: '/svg-view',
-    element: lazyLoad(lazy(() => import('@/views/common/svgView'))),
+    element: lazyLoad(lazy(() => import('@/views/devView/svgView'))),
     meta: {
       log: createLogParams('svgView')
     }
@@ -45,7 +41,7 @@ const commonRouteConfig:RouteProps[] = [
 ]
 const config: RouteProps[] = [
   ...routeConfig,
-  ...commonRouteConfig,
+  ...devRouteConfig,
   {
     path: '*',
     element: lazyLoad(lazy(() => import('@/views/pages/404'))),

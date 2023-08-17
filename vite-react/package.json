@@ -7,6 +7,7 @@
     "start": "vite --mode dev",
     "build:prod": "tsc && vite build --mode prod",
     "build:test": "tsc && vite build --mode test",
+    "build:pre-pord": "tsc && vite build --mode pre-prod",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -44,6 +45,7 @@
     "prettier": "^2.8.4",
     "typescript": "^5.0.2",
     "vite": "^4.3.9",
+    "vite-plugin-imagemin": "^0.6.1",
     "vite-plugin-svg-icons": "^2.0.1"
   }
 }

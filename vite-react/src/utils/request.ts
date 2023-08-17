@@ -13,12 +13,12 @@ export class Request {
 
   constructor(config: AxiosRequestConfig) {
 
-    this.instance = axios.create({timeout: 10000, ...config});
+    this.instance = axios.create({ timeout: 10000, ...config });
 
     this.instance.interceptors.request.use(
       (config) => {
         const token = localStorage.getItem("token") as string
-        if(token) {
+        if (token) {
           config.headers.Authorization = token;
         }
         console.log(config)
@@ -90,4 +90,4 @@ export class Request {
   }
 }
 
-export default new Request({ baseURL: import.meta.env.VITE_APP_BASEURL})
+export default new Request({ baseURL: import.meta.env.VITE_APP_BASEURL })

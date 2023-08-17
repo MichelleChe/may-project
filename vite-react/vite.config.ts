@@ -4,9 +4,12 @@ import { resolve } from "path"
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import path from 'path'
 import postcsspxtoviewport from 'postcss-px-to-viewport'
+import viteImagemin from 'vite-plugin-imagemin'
 
+const isDev = process.env.NODE_ENV === 'production'
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: isDev ? '//ali.bczcdn.com/nocturne/' : '/',
   plugins: [
     react(),
     // 注册所有的svg文件生成svg雪碧图
@@ -15,6 +18,24 @@ export default defineConfig({
       symbolId: "icon-[name]", // symbol的id
       inject: "body-last", // 插入的位置
       customDomId: "__svg__icons__dom__" // svg的id
+    }),
+    viteImagemin({
+      // 无损压缩配置
+      optipng: {
+        optimizationLevel: 7
+      },
+      // svg 优化
+      svgo: {
+        plugins: [
+          {
+            name: 'removeViewBox'
+          },
+          {
+            name: 'removeEmptyAttrs',
+            active: false
+          }
+        ]
+      }
     })
   ],
   server: {

@@ -39,4 +39,4 @@ export default function createStorageModel<T>(key: string, storage = localStorag
   return model
 }
 
-export const testModal = createStorageModel<{name: string, age: number}>('test_modal')
+// export const svgModal = createStorageModel<string[]>('test_modal')

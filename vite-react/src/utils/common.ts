@@ -6,7 +6,7 @@ export function sleep(time = 1000) {
   })
 }
 
-export const isDev = process.env.NODE_ENV === 'development'
+export const isDev = import.meta.env.DEV
 
 export function encodeUrlParams(params) {
   return window.btoa(encodeURIComponent(JSON.stringify(params)))

@@ -27,9 +27,9 @@ const Page1: FC = () => {
 
       <Button onClick={toPage2}>page2</Button>
 
-      <div className={cls(styles.text, 'ft12','color')}>
+      <div className={cls(styles.text, 'ft12', 'color')}>
         风华绝代身份和大姐夫好的师傅虎岛和夫大姐夫和大姐夫好``
-        </div>
+      </div>
       <div onClick={() => dispatch(testAsync())}>click</div>
       {value}
       {name}
