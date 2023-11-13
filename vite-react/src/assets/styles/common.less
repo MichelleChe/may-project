@@ -81,3 +81,52 @@
 }
 
 .generate-style(50);
+
+
+.dark {
+  background: rgb(31 41 55);
+  color: #fff;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+
+@keyframes slide-from-right {
+  from { transform: translateX(30px); }
+}
+
+@keyframes slide-to-left {
+  to { transform: translateX(-30px); }
+}
+
+
+// .light {
+//   background: #fff;
+//   color: #000;
+// }
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  // mix-blend-mode: normal;
+  // animation-duration: 2s;
+}
+
+/* 进入dark模式和退出dark模式时，两个图像的位置顺序正好相反 */
+.dark::view-transition-old(root) {
+  z-index: 1;
+}
+.dark::view-transition-new(root) {
+  z-index: 999;
+}
+
+::view-transition-old(root) {
+  z-index: 999;
+}
+::view-transition-new(root) {
+  z-index: 1;
+}

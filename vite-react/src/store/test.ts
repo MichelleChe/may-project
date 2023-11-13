@@ -1,3 +1,4 @@
+import { testApi } from '@/api/test'
 import { sleep } from '@/utils/common'
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
@@ -28,6 +29,8 @@ export const { setTestValue } = testSlice.actions
 export const testAsync = createAsyncThunk('testAsync', async (_, { dispatch }) => {
   await sleep(2000)
   dispatch(setTestValue({ value: 3 }))
+  const data = await testApi()
+  console.log(data)
 })
 
 

@@ -1,5 +1,5 @@
 import request from '@/utils/request'
 
 export function testApi() {
-  return request.get<{name: string}>('/test-api')
+  return request.get<{ name: string }>('/api/get')
 }

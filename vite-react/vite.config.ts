@@ -5,19 +5,19 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import path from 'path'
 import postcsspxtoviewport from 'postcss-px-to-viewport'
 import viteImagemin from 'vite-plugin-imagemin'
+import { viteMockServe } from "vite-plugin-mock";
 
-const isDev = process.env.NODE_ENV === 'production'
+
+const isDev = process.env.NODE_ENV === 'development'
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: isDev ? '//ali.bczcdn.com/nocturne/' : '/',
+  base: isDev ? '/' : '//ali.bczcdn.com/nocturne/',
   plugins: [
     react(),
     // 注册所有的svg文件生成svg雪碧图
     createSvgIconsPlugin({
       iconDirs: [path.resolve(process.cwd(), "src/assets/svg")], // icon存放的目录
       symbolId: "icon-[name]", // symbol的id
-      inject: "body-last", // 插入的位置
-      customDomId: "__svg__icons__dom__" // svg的id
     }),
     viteImagemin({
       // 无损压缩配置
@@ -36,6 +36,9 @@ export default defineConfig({
           }
         ]
       }
+    }),
+    viteMockServe({
+      mockPath: "./mock/"
     })
   ],
   server: {
@@ -81,5 +84,15 @@ export default defineConfig({
         })
       ]
     }
-  }
+  },
+  build: {
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        //生产环境时移除console
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
+  },
 })

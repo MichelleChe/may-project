@@ -20,10 +20,10 @@ const routeConfig: RouteProps[] = [{
       }
     },
     {
-      path: '/page2',
-      element: lazyLoad(lazy(() => import('@/views/pages/page2'))),
+      path: '/change-theme',
+      element: lazyLoad(lazy(() => import('@/views/pages/changeTheme'))),
       meta: {
-        log: createLogParams('page2')
+        log: createLogParams('changeTheme')
       }
     }
   ]
