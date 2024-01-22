@@ -12,6 +12,8 @@ const isDev = process.env.NODE_ENV === 'development'
 // https://vitejs.dev/config/
 export default defineConfig({
   base: isDev ? '/' : '//ali.bczcdn.com/nocturne/',
+
+
   plugins: [
     react(),
     // 注册所有的svg文件生成svg雪碧图
